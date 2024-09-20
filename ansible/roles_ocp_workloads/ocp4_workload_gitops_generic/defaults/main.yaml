@@ -1,0 +1,16 @@
+---
+become_override: false
+ocp_username: opentlc-mgr
+silent: false
+
+ocp4_workload_gitops_generic_user_count: >-
+  {{ ocp4_workload_authentication_htpasswd_user_count
+   | default(user_count)
+   | default(num_users)
+   | default(1)
+  }}
+ocp4_workload_gitops_generic_user_prefix: >-
+  {{ (ocp4_workload_authentication_htpasswd_user_base | default('user')) }}
+
+ocp4_workload_gitops_generic_repo: https://github.com/rbo/ocpmulti-wksp-cnv-gitops.git
+ocp4_workload_gitops_generic_repo_tag: main
